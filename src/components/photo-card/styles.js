@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../styles/animation'
 
 export const Card = styled.div`
   position: relative;
@@ -15,6 +16,7 @@ export const ImgWrapper = styled.div`
 `
 
 export const Img = styled.img`
+  ${fadeIn({ time: '3s' })};
   box-shadow: 0 10px 14px rgba(0, 0, 0, .2);
   height: 100%;
   object-fit: cover;
