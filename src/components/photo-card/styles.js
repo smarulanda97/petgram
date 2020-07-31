@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animation'
 
-export const Card = styled.div`
+export const Card = styled.article`
   position: relative;
-  margin-bottom: 25px
+  margin-bottom: 25px;
+  min-height: 200px;
 `
 
 export const ImgWrapper = styled.div`

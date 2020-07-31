@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { slideIn, fadeIn } from '../../styles/animation'
+import styled, { css } from 'styled-components'
+import { slideIn } from '../../styles/animation'
 
 export const List = styled.ul`
   display: flex;
@@ -10,7 +10,7 @@ export const List = styled.ul`
     background: #ccc;
     border-radius: 4px;
   }
-  &.fixed {
+  ${props => props.fixed && css`
     ${slideIn()};
     left: 0;
     right: 0;
@@ -24,7 +24,7 @@ export const List = styled.ul`
     border-radius: 60px;
     box-sizing: border-box;
     box-shadow: 0 0 20px rgba(0, 0, 0, .3);
-  }
+  `}
 `
 
 export const Item = styled.li`
