@@ -29,6 +29,7 @@
     "@babel/runtime": "^7.10.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "dotenv-webpack": "^2.0.0",
     "html-webpack-plugin": "^4.3.0",
     "standard": "^14.3.4",
     "webpack": "^4.44.0",

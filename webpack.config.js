@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   output: {
@@ -7,7 +8,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    })
+    }),
+    new Dotenv()
   ],
   module: {
     rules: [{
@@ -20,5 +22,6 @@ module.exports = {
         }
       }
     }]
-  }
+  },
+  devtool: "inline-source-map"
 }
