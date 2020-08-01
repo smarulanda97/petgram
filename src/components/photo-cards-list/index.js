@@ -1,10 +1,10 @@
 import React from 'react';
 import { PhotoCard } from '../photo-card'
 
-export const PhotoCardsList = () => {
+export const PhotoCardsList = ({ photos }) => {
   return(
     <section>
-      {[1, 2, 3, 4, 5, 6, 7].map((photoCard) =>  <PhotoCard key={photoCard} id={photoCard} />)}
+      {photos.map((photo) => <PhotoCard key={photo.id} {...photo} />)}
     </section>
   )
 }
