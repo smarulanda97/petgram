@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
@@ -7,7 +8,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: path.resolve('src', 'index.html'),
+      favicon: path.resolve('public', 'favicon.ico'),
+      title: 'Petgram - by Smarulanda 97'
     }),
     new Dotenv()
   ],
