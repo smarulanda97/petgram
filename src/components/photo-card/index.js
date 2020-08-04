@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
-import { FavButton } from '../fav-buttom'
+import { FavButton } from '../fav-button'
 import { Card, ImgWrapper, Img } from './styles'
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { useLocalStorage } from '../../hooks/useLocalStorage'

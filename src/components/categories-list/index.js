@@ -10,7 +10,7 @@ export const CategoriesList = () => {
   const { categories, loading } = useCategoriesData()
 
   useEffect(() => {
-    const newShowFixed = scrollY > 200;
+    const newShowFixed = scrollY > 150;
     (showFixed !== newShowFixed) && setShowFixed(newShowFixed)
   }, [scrollY]);
 
@@ -28,7 +28,7 @@ export const CategoriesList = () => {
 
   return (
     <>
-      { renderList() }
+      { renderList(showFixed) }
       { showFixed && renderList(true) }
     </>
   )
