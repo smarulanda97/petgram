@@ -4,12 +4,14 @@ const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   output: {
-    filename: 'app.bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve('src', 'index.html'),
-      favicon: path.resolve('public', 'favicon.ico'),
+      template: path.resolve(__dirname, 'src/index.html'),
+      favicon: path.resolve(__dirname, 'public/favicon.ico'),
       title: 'Petgram - by Smarulanda 97'
     }),
     new Dotenv()
@@ -26,5 +28,8 @@ module.exports = {
       }
     }]
   },
-  devtool: "inline-source-map"
+  devtool: "inline-source-map",
+  devServer: {
+    historyApiFallback: true
+  }
 }
