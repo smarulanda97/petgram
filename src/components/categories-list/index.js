@@ -28,7 +28,7 @@ export const CategoriesList = () => {
 
   return (
     <>
-      { renderList(showFixed) }
+      { renderList(false) }
       { showFixed && renderList(true) }
     </>
   )

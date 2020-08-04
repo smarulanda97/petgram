@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Logo } from '../logo'
 import { GlobalStyles } from '../../styles/GlobalStyles'
 import { Link } from 'react-router-dom'
+import { NavBar } from '../nav-bar'
 
 export const Layout = ({ children }) => {
   return (
@@ -15,6 +16,9 @@ export const Layout = ({ children }) => {
       <main>
         { children }
       </main>
+      <footer>
+        <NavBar />
+      </footer>
     </Fragment>
   )
 }
