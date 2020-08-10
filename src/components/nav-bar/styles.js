@@ -10,7 +10,6 @@ export const Nav = styled.nav`
   display: flex;
   height: 50px;
   justify-content: space-around;
-  left: 0;
   margin: 0 auto;
   max-width: 500px;
   position: fixed;

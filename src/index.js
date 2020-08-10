@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import { Apollo } from './Apollo'
+import { App } from './App'
 
 ReactDOM.render(
-  <Apollo>
+  <React.StrictMode>
     <App />
-  </Apollo>,
+  </React.StrictMode>,
   document.getElementById('root')
 )

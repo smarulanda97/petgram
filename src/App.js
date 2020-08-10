@@ -1,22 +1,13 @@
 import React from 'react'
-import Home from './pages/Home'
-import Detail from './pages/Detail'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Router } from './Router'
+import { Apollo } from './Apollo'
+import { Provider } from './Context'
 
-const App = () => {
-  const urlParams = new window.URLSearchParams(window.location.search)
-  const detailId = urlParams.get('detail')
+export const App = () => (
+  <Provider>
+    <Apollo>
+      <Router />
+    </Apollo>
+  </Provider>
+)
 
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path={'/'} component={Home} exact/>
-        <Route path={'/favorites'} component={Home} exact/>
-        <Route path={'/user'} component={Home} exact/>
-        <Route path={'/detail/:id'} component={Detail} exact />
-      </Switch>
-    </BrowserRouter>
-  )
-}
-
-export default App
