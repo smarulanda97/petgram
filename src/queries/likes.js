@@ -9,3 +9,13 @@ export const LIKE_ANONYMOUS_PHOTO = gql`
     }
   }
 `
+
+export const LIKE_PHOTO = gql`
+  mutation likePhoto($input: LikePhoto!) {
+    likePhoto(input: $input) {
+      id,
+      likes,
+      liked
+    }
+  }
+`

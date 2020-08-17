@@ -7,7 +7,7 @@ import { AuthMutation } from '../containers/AuthMutation'
 
 const Login = (props) => {
   const history = useHistory();
-  const { setIsAuth, isAuth } = useContext(Context)
+  const { activateAuth, isAuth } = useContext(Context)
   const urlParams = new window.URLSearchParams(window.location.search)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Login = (props) => {
       ({ login }) => {
         const onSubmit = (input) => {
           login.singIn({ variables: { input }})
-            .then(({ data }) => setIsAuth(data.login))
+            .then(({ data }) => activateAuth(data.login))
             .catch(e => console.log(e))
         }
         return <UserForm

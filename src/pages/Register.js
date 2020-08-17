@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 
 const Register = (props) => {
   const history = useHistory();
-  const { setIsAuth, isAuth } = useContext(Context)
+  const { activateAuth, isAuth } = useContext(Context)
   const urlParams = new window.URLSearchParams(window.location.search)
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Register = (props) => {
         ({ register }) => {
           const onSubmit = (input) => {
             register.singup({ variables: { input } })
-            .then(({ data }) => setIsAuth(data.signup))
+            .then(({ data }) => activateAuth(data.signup))
             .catch((e) => console.log(e))
           }
           return (

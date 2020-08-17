@@ -9,9 +9,9 @@ import Detail from './pages/Detail'
 import Register from './pages/Register'
 import Favorites from './pages/Favorites'
 
-const PrivateRoute = ({ component: Component, isAuth, loginPath = '/auth/login', ...rest }) => (
+const PrivateRoute = ({ component: Component, isAuth, loginPath = process.env.APP_AUTH_URL, ...rest }) => (
   <Route
-    render={props => isAuth ? <Component {...props} /> : <Redirect to={`${loginPath}?redirect=${rest.path}`} />} { ...rest }
+    render={props => isAuth ? <Component {...props} /> : <Redirect from={rest.path} to={`${loginPath}?redirect=${rest.path}`} />} { ...rest }
   />
 )
 
@@ -23,7 +23,7 @@ export const Router = ({ children }) => {
       <Switch>
         <Route path={'/'} component={Home} exact/>
         <Route path={'/auth/register'} component={Register} exact />
-        <Route path={'/auth/login'} component={Login} exact />
+        <Route path={process.env.APP_AUTH_URL} component={Login} exact />
         <Route path={'/detail/:id'} component={Detail} exact />
         <PrivateRoute path={'/user'} component={User} isAuth={isAuth}/>
         <PrivateRoute path={'/favorites'} component={Favorites} isAuth={isAuth}/>

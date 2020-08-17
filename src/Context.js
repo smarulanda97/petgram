@@ -8,9 +8,13 @@ export const Provider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(() => window.sessionStorage.getItem(`token`))
   const value = {
     isAuth,
-    setIsAuth: token => {
+    activateAuth: token => {
       setIsAuth(true)
       window.sessionStorage.setItem(`token`, token)
+    },
+    removeAuth: () => {
+      setIsAuth(false)
+      window.sessionStorage.removeItem('token')
     }
   }
 

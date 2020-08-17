@@ -16,7 +16,8 @@ app.use(cors())
 // auth middleware
 const auth = jwt({
   secret: process.env.JWT_SECRET,
-  credentialsRequired: false
+  credentialsRequired: false,
+  expires: '1m'
 })
 
 require('./adapter')

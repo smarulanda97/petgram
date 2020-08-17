@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { useMutation } from '@apollo/client'
-import { LIKE_ANONYMOUS_PHOTO } from '../queries/likes'
+import { LIKE_PHOTO } from '../queries/likes'
 
 export const ToggleLikeMutation = ({ render }) => {
-  const [toggleLike] = useMutation(LIKE_ANONYMOUS_PHOTO)
+  const [toggleLike] = useMutation(LIKE_PHOTO)
   return (
     <Fragment>
       { render(toggleLike) }
