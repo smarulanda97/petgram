@@ -9,9 +9,9 @@ import Detail from './pages/Detail'
 import Register from './pages/Register'
 import Favorites from './pages/Favorites'
 
-const PrivateRoute = ({ component: Component, isAuth, redirectTo = '/auth/login', ...rest }) => (
+const PrivateRoute = ({ component: Component, isAuth, loginPath = '/auth/login', ...rest }) => (
   <Route
-    render={props => isAuth ? <Component {...props} /> : <Redirect to={redirectTo} />} { ...rest }
+    render={props => isAuth ? <Component {...props} /> : <Redirect to={`${loginPath}?redirect=${rest.path}`} />} { ...rest }
   />
 )
 

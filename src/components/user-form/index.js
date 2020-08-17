@@ -31,13 +31,14 @@ export const UserForm = ({ onSubmit, title, button, error, disabled, header, foo
 }
 
 export const UserFormFooter = ({ description = '', buttonText = '', path = '/' }) => {
+  const urlParams = new window.URLSearchParams(window.location.search)
   const history = useHistory();
   return (
     <div>
       <p>{ description }</p>
       <Button
         outline
-        onClick={() => history.push(path)}
+        onClick={() => history.push(`${path}?redirect=${urlParams.get('redirect') || '/'}`)}
       >{ buttonText }</Button>
     </div>
   )

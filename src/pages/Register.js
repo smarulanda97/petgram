@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from '../Context'
 import { withLayout } from '../hoc/withLayout'
 import { UserForm, UserFormFooter } from '../components/user-form'
 import { AuthMutation } from '../containers/AuthMutation'
+import { useHistory } from 'react-router-dom'
 
 const Register = (props) => {
-  const { setIsAuth } = useContext(Context)
+  const history = useHistory();
+  const { setIsAuth, isAuth } = useContext(Context)
+  const urlParams = new window.URLSearchParams(window.location.search)
+
+  useEffect(() => {
+    isAuth && history.push(urlParams.get('redirect') || `/`)
+  }, [isAuth])
 
   return (
     <AuthMutation>
@@ -13,14 +20,14 @@ const Register = (props) => {
         ({ register }) => {
           const onSubmit = (input) => {
             register.singup({ variables: { input } })
-            .then(() => setIsAuth(true))
+            .then(({ data }) => setIsAuth(data.signup))
             .catch((e) => console.log(e))
           }
           return (
             <UserForm
-              title={'Sing up'}
+              title={'Register'}
               disabled={register.loading}
-              button={'Sing up'}
+              button={'Register'}
               onSubmit={onSubmit}
               footer={() => (
                 <UserFormFooter
