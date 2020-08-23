@@ -27,7 +27,7 @@ const CategoriesListComponent = () => {
   )
 
   return (
-    <>x
+    <>
       { renderList(false) }
       { showFixed && renderList(true) }
     </>

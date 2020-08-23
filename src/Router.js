@@ -22,6 +22,7 @@ export const Router = ({ children }) => {
     <BrowserRouter>
       <Switch>
         <Route path={'/'} component={Home} exact/>
+        <Route path={'/photos/:categoryId'} component={Home} exact/>
         <Route path={'/auth/register'} component={Register} exact />
         <Route path={process.env.APP_AUTH_URL} component={Login} exact />
         <Route path={'/detail/:id'} component={Detail} exact />
