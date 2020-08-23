@@ -4,7 +4,7 @@ import { Category } from '../category'
 import { useWindowScroll } from '../../hooks/useWindowScroll'
 import { useCategoriesData } from '../../hooks/useCategoriesData'
 
-export const CategoriesList = () => {
+const CategoriesListComponent = () => {
   const { scrollY } = useWindowScroll()
   const [showFixed, setShowFixed] = useState(false)
   const { categories, loading } = useCategoriesData()
@@ -27,9 +27,11 @@ export const CategoriesList = () => {
   )
 
   return (
-    <>
+    <>x
       { renderList(false) }
       { showFixed && renderList(true) }
     </>
   )
 }
+
+export const CategoriesList = React.memo(CategoriesListComponent);

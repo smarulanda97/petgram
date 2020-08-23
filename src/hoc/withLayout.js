@@ -1,12 +1,12 @@
 import React from 'react'
-import { Layout } from '../components/layout/Layout'
+import { Layout } from '../components/layout'
 import { CategoriesList } from '../components/categories-list'
 
 export const withLayout = (WrappedComponent, config= {
-  categoryList: true
+  categoryList: false
 }) => (props) => {
   return (
-    <Layout>
+    <Layout {...config}>
       { config.categoryList && <CategoriesList />}
       <WrappedComponent {...props}/>
     </Layout>

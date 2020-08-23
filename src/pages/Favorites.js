@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { withLayout } from '../hoc/withLayout'
 import { FavoritesWithQuery } from '../containers/FavoritesWithQuery'
 
@@ -9,5 +9,7 @@ const Favorites = () => {
 }
 
 export default withLayout(Favorites, {
-  categoryList: false
+  categoryList: false,
+  title: 'Your favorites',
+  description: 'Here you cand find your favorite pets'
 })
