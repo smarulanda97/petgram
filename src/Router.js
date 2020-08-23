@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, Suspense } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { Context } from './Context'
 
-import Home from './pages/Home'
-import User from './pages/User'
-import Login from './pages/Login'
-import Detail from './pages/Detail'
-import Register from './pages/Register'
-import Favorites from './pages/Favorites'
+const Home = React.lazy(() => import('./pages/Home'))
+const User = React.lazy(() => import('./pages/User'))
+const Login = React.lazy(() => import('./pages/Login'))
+const Detail = React.lazy(() => import('./pages/Detail'))
+const Register = React.lazy(() => import('./pages/Register'))
+const Favorites = React.lazy(() => import('./pages/Favorites'))
+
+const RenderLoader = () => <div/>;
 
 const PrivateRoute = ({ component: Component, isAuth, loginPath = process.env.APP_AUTH_URL, ...rest }) => (
   <Route
@@ -21,13 +23,15 @@ export const Router = ({ children }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={'/'} component={Home} exact/>
-        <Route path={'/photos/:categoryId'} component={Home} exact/>
-        <Route path={'/auth/register'} component={Register} exact />
-        <Route path={process.env.APP_AUTH_URL} component={Login} exact />
-        <Route path={'/detail/:id'} component={Detail} exact />
-        <PrivateRoute path={'/user'} component={User} isAuth={isAuth}/>
-        <PrivateRoute path={'/favorites'} component={Favorites} isAuth={isAuth}/>
+        <Suspense fallback={<RenderLoader />}>
+          <Route path={'/'} component={Home} exact/>
+          <Route path={'/photos/:categoryId'} component={Home} exact/>
+          <Route path={'/auth/register'} component={Register} exact />
+          <Route path={process.env.APP_AUTH_URL} component={Login} exact />
+          <Route path={'/detail/:id'} component={Detail} exact />
+          <PrivateRoute path={'/user'} component={User} isAuth={isAuth}/>
+          <PrivateRoute path={'/favorites'} component={Favorites} isAuth={isAuth}/>
+        </Suspense>
       </Switch>
     </BrowserRouter>
   )
