@@ -23,6 +23,7 @@ You can see the app in https://petgram.smarulanda97.vercel.app
 
 ## INSTALLATION PROCESS
 
+* `cp .env.example .env` Create env vars file
 * `npm install` Install project dependencies
 * `npm run dev` Run development server and open http://localhost:8080
 * `npm run build`  For build a production build
