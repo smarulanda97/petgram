@@ -1,23 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from '@apollo/client'
+import { GET_CATEGORIES } from '../queries/categories'
 
 export function useCategoriesData() {
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data = { categories: [] }, error, loading } = useQuery(GET_CATEGORIES)
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const response = await fetch(`https://petgram-api-smarulanda97.vercel.app/categories`)
-        const data = await response.json()
-        setCategories(data)
-        setLoading(false)
-      } catch (e) {
-        setError(e);
-      }
-    }
-    getCategories()
-  }, [])
-
-  return { categories, loading };
+  return { categories: data.categories, loading };
 }

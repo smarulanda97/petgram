@@ -5,7 +5,7 @@ export const Category = ({ cover, path, emoji = '?', id }) => {
   return (
     <Anchor to={`/photos/${id}`}>
       <Image src={cover} alt={'Category image'}/>
-      {/*<span>{ emoji }</span>*/}
+      <span>{ emoji }</span>
     </Anchor>
   )
 }
