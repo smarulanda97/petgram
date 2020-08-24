@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react'
-import { Logo } from '../logo'
-import { GlobalStyles } from '../../styles/GlobalStyles'
 import { Link } from 'react-router-dom'
-import { NavBar } from '../nav-bar'
 import { Helmet } from 'react-helmet'
+import PropTypes from 'prop-types'
+
+import { GlobalStyles } from '../../styles/GlobalStyles'
+import { NavBar } from '../nav-bar'
+import { Logo } from '../logo'
 
 export const Layout = ({ children, title, description }) => {
   return (
@@ -26,4 +28,10 @@ export const Layout = ({ children, title, description }) => {
       </footer>
     </Fragment>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+  description: PropTypes.string,
 }

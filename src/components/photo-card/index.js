@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -6,9 +7,7 @@ import { Card, ImgWrapper, Img } from './styles'
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { ToggleLikeMutation } from '../../containers/ToggleLikeMutation'
 
-const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60';
-
-export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE } = {}) => {
+export const PhotoCard = ({ id, liked, likes = 0, src } = {}) => {
   const [show, ref] = useNearScreen()
   const handleToggleLike = (toggleLike) => toggleLike({ variables: { input: { id } } })
 
@@ -16,9 +15,9 @@ export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE } = {}) =>
     <Card ref={ref}>
       { !show
         ?
-        null
+         null
         :
-        <Fragment>
+        <>
           <Link to={`/detail/${id}`}>
             <ImgWrapper>
               <Img src={src} alt=""/>
@@ -31,8 +30,15 @@ export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE } = {}) =>
               onClick={() => handleToggleLike(toggleLike)}
             />)}
           />
-        </Fragment>
+        </>
       }
     </Card>
   )
+}
+
+PhotoCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  liked: PropTypes.bool.isRequired,
+  likes: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
 }
