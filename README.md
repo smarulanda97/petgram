@@ -1,6 +1,6 @@
 # PETGRAM
 
-This project is my practice of the course "React Avanzado" in Platzi. Actually is in development, but you can take pieces of this code how reference for your projects.
+This project is my practice of the course "React Avanzado" in Platzi. You can take pieces of this code how reference for your projects.
 
 Feel free to contribute with this project, make corrections and teach your good development practices.
 
